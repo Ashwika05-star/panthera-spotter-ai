@@ -44,7 +44,7 @@ function Home() {
     <div>
       <section className="relative flex min-h-screen items-center overflow-hidden">
         <video
-          className="absolute inset-0 h-full w-full object-cover slow-zoom brightness-125"
+          className="absolute inset-0 h-full w-full object-cover slow-zoom brightness-150"
           src={media.heroVideo}
           poster={media.foliage}
           autoPlay
