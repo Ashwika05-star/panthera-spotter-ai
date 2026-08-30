@@ -10,11 +10,35 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AnalysisRouteImport } from './routes/analysis'
+import { Route as IvpSystemRouteImport } from './routes/ivp-system'
+import { Route as ReachUsRouteImport } from './routes/reach-us'
+import { Route as ResearchRouteImport } from './routes/research'
 import { Route as VisionAiRouteImport } from './routes/vision-ai'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AnalysisRoute = AnalysisRouteImport.update({
+  id: '/analysis',
+  path: '/analysis',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IvpSystemRoute = IvpSystemRouteImport.update({
+  id: '/ivp-system',
+  path: '/ivp-system',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReachUsRoute = ReachUsRouteImport.update({
+  id: '/reach-us',
+  path: '/reach-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResearchRoute = ResearchRouteImport.update({
+  id: '/research',
+  path: '/research',
   getParentRoute: () => rootRouteImport,
 } as any)
 const VisionAiRoute = VisionAiRouteImport.update({
@@ -25,27 +49,52 @@ const VisionAiRoute = VisionAiRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/analysis': typeof AnalysisRoute
+  '/ivp-system': typeof IvpSystemRoute
+  '/reach-us': typeof ReachUsRoute
+  '/research': typeof ResearchRoute
   '/vision-ai': typeof VisionAiRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/analysis': typeof AnalysisRoute
+  '/ivp-system': typeof IvpSystemRoute
+  '/reach-us': typeof ReachUsRoute
+  '/research': typeof ResearchRoute
   '/vision-ai': typeof VisionAiRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/analysis': typeof AnalysisRoute
+  '/ivp-system': typeof IvpSystemRoute
+  '/reach-us': typeof ReachUsRoute
+  '/research': typeof ResearchRoute
   '/vision-ai': typeof VisionAiRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/vision-ai'
+  fullPaths:
+    '/' | '/analysis' | '/ivp-system' | '/reach-us' | '/research' | '/vision-ai'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/vision-ai'
-  id: '__root__' | '/' | '/vision-ai'
+  to:
+    '/' | '/analysis' | '/ivp-system' | '/reach-us' | '/research' | '/vision-ai'
+  id:
+    | '__root__'
+    | '/'
+    | '/analysis'
+    | '/ivp-system'
+    | '/reach-us'
+    | '/research'
+    | '/vision-ai'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AnalysisRoute: typeof AnalysisRoute
+  IvpSystemRoute: typeof IvpSystemRoute
+  ReachUsRoute: typeof ReachUsRoute
+  ResearchRoute: typeof ResearchRoute
   VisionAiRoute: typeof VisionAiRoute
 }
 
@@ -56,6 +105,34 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/analysis': {
+      id: '/analysis'
+      path: '/analysis'
+      fullPath: '/analysis'
+      preLoaderRoute: typeof AnalysisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ivp-system': {
+      id: '/ivp-system'
+      path: '/ivp-system'
+      fullPath: '/ivp-system'
+      preLoaderRoute: typeof IvpSystemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reach-us': {
+      id: '/reach-us'
+      path: '/reach-us'
+      fullPath: '/reach-us'
+      preLoaderRoute: typeof ReachUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/research': {
+      id: '/research'
+      path: '/research'
+      fullPath: '/research'
+      preLoaderRoute: typeof ResearchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/vision-ai': {
@@ -70,6 +147,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AnalysisRoute: AnalysisRoute,
+  IvpSystemRoute: IvpSystemRoute,
+  ReachUsRoute: ReachUsRoute,
+  ResearchRoute: ResearchRoute,
   VisionAiRoute: VisionAiRoute,
 }
 export const routeTree = rootRouteImport
